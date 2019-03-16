@@ -1,0 +1,38 @@
+{% extends 'web/base_main.html' %}
+
+{% block title %}
+    {{ inform.name }}的博客
+{% endblock %}
+
+{% block css %}
+	{{ super() }}
+	<link href="/static/web/css/learn.css" rel="stylesheet">
+{% endblock %}
+
+{% block js %}
+	{{ super() }}
+	<script src="/static/web/js/scrollReveal.js"></script>
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="container">
+            <div class="div2">
+                <h1>{{ article.title }}</h1>
+                <span>分类：</span><span>{{ article.tp.art_name }}</span>&nbsp;&nbsp;&nbsp;
+                <span>作者：</span><span>{{ inform.name }}</span>&nbsp;&nbsp;&nbsp;
+                <span>创建时间：</span><span>{{ article.create_time }}</span>
+            </div>
+            <div class="div3">
+                <p>{{ article.content | safe }}</p>
+            </div>
+        </div>
+    </article>
+<script>
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+        (function(){
+            window.scrollReveal = new scrollReveal({reset: true});
+        })();
+    };
+</script>
+{% endblock %}

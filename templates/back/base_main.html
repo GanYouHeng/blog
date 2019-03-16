@@ -1,0 +1,43 @@
+
+{% extends 'back/base.html' %}
+
+{% block js %}
+    <script src="/static/back/js/jquery-2.2.1.js"></script>
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="/static/back/css/style.css">
+{% endblock %}
+
+{% block header %}
+<header>
+    <h1><img src="/static/back/images/admin_logo.png"/></h1>
+    <ul class="rt_nav">
+        <li><a href="{{ url_for('web.index') }}" class="website_icon">站点首页</a></li>
+        <li><a href="{{ url_for('back.update_password') }}" class="set_icon">修改密码</a></li>
+        <li><a href="{{ url_for('back.logout') }}" class="quit_icon">安全退出</a></li>
+    </ul>
+</header>
+{% endblock %}
+
+{% block aside %}
+ <aside class="lt_aside_nav content mCustomScrollbar">
+        <h2><a href="{{ url_for('back.index') }}">博客后台菜单栏</a></h2>
+        <ul>
+            <li>
+                <dl>
+                    <dt>文章管理</dt>
+                    <!--当前链接则添加class:active-->
+                    <dd><a href="{{ url_for('back.a_type') }}">文章分类</a></dd>
+                    <dd><a href="{{ url_for('back.article_list') }}">文章列表</a></dd>
+                </dl>
+            </li>
+            <li>
+                <dl>
+                    <dt>用户管理</dt>
+                    <dd><a href="{{ url_for('back.user_inform') }}">用户信息</a></dd>
+                </dl>
+            </li>
+            </ul>
+    </aside>
+{% endblock %}

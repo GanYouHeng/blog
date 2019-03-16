@@ -1,0 +1,73 @@
+{% extends 'back/base_main.html' %}
+
+{% block title %}
+    用户信息
+{% endblock %}
+
+{% block js %}
+    {{ super() }}
+    <script src="/static/back/js/jquery.mCustomScrollbar.concat.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<section class="rt_wrap mCustomScrollbar">
+    <div class="rt_content">
+        <div class="page_title">
+            <h2 class="fl">用户信息</h2>
+        </div>
+        <section>
+            <ul class="ulColumn2">
+                <li>
+                    <span class="item_name" style="width:120px;">用户名：</span>
+                    <span>{{ userinform.name }}</span>
+                </li>
+                <li>
+                    <span class="item_name" style="width:120px;">性别：</span>
+                    {% if userinform.sex == 0 %}
+                        <span>男</span>
+                    {% elif userinform.sex == 1 %}
+                        <span>女</span>
+                    {% endif %}
+                </li>
+                <li>
+                    <span class="item_name" style="width:120px;">出生日期：</span>
+                    {% if userinform.birth == None %}
+                        <span></span>
+                    {% else %}
+                        <span>{{ userinform.birth }}</span>
+                    {% endif %}
+                </li>
+                <li>
+                    <span class="item_name" style="width:120px;">手机号码：</span>
+                    {% if userinform.tel == None %}
+                        <span></span>
+                    {% else %}
+                        <span>{{ userinform.tel }}</span>
+                    {% endif %}
+
+                </li>
+                <li>
+                    <span class="item_name" style="width:120px;">电子邮箱：</span>
+                    {% if userinform.email == None %}
+                        <span></span>
+                    {% else %}
+                        <span>{{ userinform.email }}</span>
+                    {% endif %}
+                </li>
+                <li>
+                    <span class="item_name" style="width:120px;">所在城市：</span>
+                    {% if userinform.city == None %}
+                        <span></span>
+                    {% else %}
+                        <span>{{ userinform.city }}</span>
+                    {% endif %}
+                </li>
+                <li>
+                    <span class="item_name" style="width:120px;"></span>
+                    <a href="{{ url_for('back.user_inform_editor') }}" class="link_btn">修改</a>
+                </li>
+            </ul>
+        </section>
+    </div>
+</section>
+{% endblock %}

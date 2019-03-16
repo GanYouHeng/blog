@@ -1,0 +1,55 @@
+
+{% extends 'web/base_main.html' %}
+
+{% block title %}
+    {{ inform.name }}的博客
+{% endblock %}
+
+{% block css %}
+	{{ super() }}
+	<link href="/static/web/css/index.css" rel="stylesheet">
+{% endblock %}
+
+{% block js %}
+	{{ super() }}
+	<script src="/static/web/js/scrollReveal.js"></script>
+{% endblock %}
+
+{% block content %}
+	<article>
+		<div class="container">
+			<ul class="cbp_tmtimeline">
+				{% for article in articles[::-1] %}
+					{% if loop.index <= 8 %}
+					<li>
+						<time class="cbp_tmtime"><span>{{ (article.create_time | string)[5:10] }}</span> <span>{{ (article.create_time | string)[:4] }}</span></time>
+						<div class="cbp_tmicon"></div>
+						<div class="cbp_tmlabel" data-scroll-reveal="enter right over 1s" >
+							<h2>{{ article.title }}</h2>
+							<p>
+								<span class="blogpic">
+									<a href="{{ url_for('web.content', id=article.id) }}">
+										<img src="/static/web/images/t03.jpg">
+									</a>
+								</span>
+								<div class="div1">
+									{{ article.desc }}
+								</div>
+							</p>
+							<a href="{{ url_for('web.content', id=article.id) }}" class="readmore">阅读全文&gt;&gt;</a>
+						</div>
+					</li>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+	</article>
+<script>
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+        (function(){
+            window.scrollReveal = new scrollReveal({reset: true});
+        })();
+    };
+</script>
+{% endblock %}
+

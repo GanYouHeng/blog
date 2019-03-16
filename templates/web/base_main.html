@@ -1,0 +1,42 @@
+
+{% extends 'web/base.html' %}
+
+{% block css %}
+    <link href="/static/web/css/base.css" rel="stylesheet">
+{% endblock %}
+
+{% block js %}
+    <script src="/static/web/js/modernizr.js"></script>
+{% endblock %}
+
+{% block header %}
+    <header>
+        <div class="logo" data-scroll-reveal="enter right over 1s">
+            <a href="#"><h1>{{ inform.name }}的博客</h1></a>
+        </div>
+        <nav class="topnav" data-scroll-reveal="enter bottom over 1s after 1s">
+            <a href="{{ url_for('web.index') }}">
+                <span>首页</span>
+                <span class="en">Home</span>
+            </a>
+             <a href="{{ url_for('web.learn', page=1) }}">
+                <span>我的笔记</span>
+                <span class="en">Learn</span>
+            </a>
+            <a href="{{ url_for('web.about') }}">
+                <span>关于我</span>
+                <span class="en">About</span>
+            </a>
+             <a href="{{ url_for('web.gbook') }}">
+                <span>留言</span>
+                <span class="en">Saying</span>
+            </a>
+        </nav>
+    </header>
+{% endblock %}
+
+{% block footer %}
+    <footer>
+        Design by DanceSmile <a href="/">蜀ICP备11002373号-1</a>
+    </footer>
+{% endblock %}

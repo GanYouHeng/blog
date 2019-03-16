@@ -1,0 +1,64 @@
+{% extends 'web/base_main.html' %}
+
+{% block title %}
+    {{ inform.name }}的博客
+{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link href="/static/web/css/about.css" rel="stylesheet">
+{% endblock %}
+
+{% block js %}
+    <script src="/static/web/js/scrollReveal.js"></script>
+{% endblock %}
+
+{% block content %}
+    <article>
+        <div class="container">
+            <div class="banner">
+                <p data-scroll-reveal="enter top over 2s">我们不停的翻弄着回忆，却再也找不回那时的自己</p>
+                <p data-scroll-reveal="enter left over 2s after 1s">人生，是一场盛大的遇见。若你懂得，就请珍惜</p>
+                <p data-scroll-reveal="enter bottom over 2s after 2s">无论下多久的雨，最后都会有彩虹；无论你多么悲伤，要相信幸福在前方等候</p>
+            </div>
+            <div class="about left">
+                <h2>关于我</h2>
+                    <ul>
+                        <li>
+                            <span>姓名:</span><span>&nbsp;&nbsp;&nbsp;{{ inform.name }}</span>
+                        </li>
+                        <li>
+                            <span>性别:</span>
+                            {% if inform.sex == 0 %}
+                                <span>&nbsp;&nbsp;&nbsp;男</span>
+                            {% else %}
+                                <span>&nbsp;v&nbsp;&nbsp;女</span>
+                            {% endif %}
+                        </li>
+                        <li>
+                            <span>出生日期:</span><span>&nbsp;&nbsp;&nbsp;{{ inform.birth }}</span>
+                        </li>
+                        <li>
+                            <span>居住地:</span><span>&nbsp;&nbsp;&nbsp;{{ inform.city }}</span>
+                        </li>
+                    </ul>
+                <h2>联系方式</h2>
+                    <ul>
+                        <li>
+                            <span>tel:</span><span>&nbsp;&nbsp;&nbsp;{{ inform.tel }}</span>
+                        </li>
+                        <li>
+                            <span>email:</span><span>&nbsp;&nbsp;&nbsp;{{ inform.email }}</span>
+                        </li>
+                    </ul>
+            </div>
+         </div>
+    </article>
+<script>
+    if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+        (function(){
+            window.scrollReveal = new scrollReveal({reset: true});
+        })();
+    };
+</script>
+{% endblock %}

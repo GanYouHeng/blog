@@ -1,0 +1,81 @@
+{% extends 'back/base_main.html' %}
+
+{% block title %}
+    修改用户信息
+{% endblock %}
+
+{% block js %}
+    {{ super() }}
+    <script src="/static/back/js/jquery.mCustomScrollbar.concat.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<section class="rt_wrap mCustomScrollbar">
+    <div class="rt_content">
+        <div class="page_title">
+            <h2 class="fl">修改用户信息</h2>
+            <a class="fr top_rt_btn" href="{{ url_for('back.user_inform') }}">返回用户信息</a>
+        </div>
+        <form action="" method="post">
+            {{ error }}
+            <section>
+                <ul class="ulColumn2">
+                    <li>
+                        <span class="item_name" style="width:120px;">用户名：</span>
+                        <input type="text" name="name" value="{{ userinform.name }}"  class="textbox"/>
+                    </li>
+                    <li>
+                        <span class="item_name" style="width:120px;">性别：</span>
+                        <input type="text" name="sex"
+                               {% if userinform.sex == 0 %}
+                                    value="男"
+                               {% elif userinform.sex == 1 %}
+                                    value="女"
+                               {% endif %} class="textbox"/>
+                    </li>
+                    <li>
+                        <span class="item_name" style="width:120px;">出生日期：</span>
+                        <input type="text" name="birth"
+                               {% if userinform.birth == None %}
+                                    value=""
+                               {% else %}
+                                    value="{{ userinform.birth }}"
+                               {% endif %}  class="textbox"/>
+                    </li>
+                    <li>
+                        <span class="item_name" style="width:120px;">手机号码：</span>
+                        <input type="text" name="tel"
+                               {% if userinform.tel == None %}
+                                    value=""
+                               {% else %}
+                                    value="{{ userinform.tel }}"
+                               {% endif %} class="textbox"/>
+                    </li>
+                    <li>
+                        <span class="item_name" style="width:120px;">电子邮箱：</span>
+                        <input type="text" name="email"
+                               {% if userinform.email == None %}
+                                    value=""
+                               {% else %}
+                                    value="{{ userinform.email }}"
+                               {% endif %}  class="textbox"/>
+                    </li>
+                    <li>
+                        <span class="item_name" style="width:120px;">所在城市：</span>
+                        <input type="text" name="city"
+                               {% if userinform.city == None %}
+                                    value=""
+                               {% else %}
+                                    value="{{ userinform.city }}"
+                               {% endif %} class="textbox"/>
+                    </li>
+                    <li>
+                        <span class="item_name" style="width:120px;"></span>
+                        <input type="submit" value="确认" class="link_btn"/>
+                    </li>
+                </ul>
+            </section>
+        </form>
+    </div>
+</section>
+{% endblock %}
